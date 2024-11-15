@@ -1,18 +1,19 @@
 const { Router } = require("express");
-const ContactController = require("./controllers/ContactController");
+const TaskController = require("./controllers/TaskController");
+const CategoryController = require("./controllers/CategoryController")
+const AgentController = require("./controllers/AgentController")
 
 const routes = Router();
 
-routes.get("/contacts", ContactController.index);
-routes.get("/contacts/:id", ContactController.show);
-routes.post("/contacts", ContactController.store);
-routes.put("/contacts/:id", ContactController.update);
-routes.delete("/contacts/:id", ContactController.delete);
+routes.get("/tasks", TaskController.index);
+routes.get("/tasks/:id", TaskController.show);
+routes.post("/tasks", TaskController.store);
+routes.put("/tasks/:id", TaskController.update);
+routes.delete("/tasks/:id", TaskController.delete);
 
-//rota "/users" - TIPO POST
-routes.post("/users", (request, response) => {
-  console.log(request.body);
-  response.json({ message: "Rota /users METODO POST" });
-});
+//rota "/agents" - TIPO POST
+ routes.post("/agents", AgentController.store);
+//rota "/categories" - TIPO POST
+routes.post("/categories", CategoryController.store);
 
 module.exports = routes;
