@@ -2,6 +2,13 @@ const db = require("../models/ConnectDatabase");
 
 class CategoryRepository {
 
+  async findAll() {
+    const rows = await db.query(`
+      SELECT * FROM categories;
+      `);
+  return rows;
+  }
+
   async create({ name }) {
     const result = await db.query(
       `

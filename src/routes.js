@@ -11,9 +11,10 @@ routes.post("/tasks", TaskController.store);
 routes.put("/tasks/:id", TaskController.update);
 routes.delete("/tasks/:id", TaskController.delete);
 
-//rota "/agents" - TIPO POST
- routes.post("/agents", AgentController.store);
-//rota "/categories" - TIPO POST
+routes.get("/agents", AgentController.index);
+routes.post("/agents", AgentController.store);
+
+routes.get("/categories", CategoryController.index);
 routes.post("/categories", CategoryController.store);
 
 module.exports = routes;

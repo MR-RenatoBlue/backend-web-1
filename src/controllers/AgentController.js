@@ -2,6 +2,10 @@ const AgentRepository = require("../repositories/AgentRepository");
 
 class AgentController {
 
+  async index(request, response) {
+    const agents = await AgentRepository.findAll();
+    response.json(agents);
+  }
 
   async store(request, response) {
     const { name, cpf, email } = request.body;

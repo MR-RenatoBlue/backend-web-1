@@ -2,6 +2,13 @@ const db = require("../models/ConnectDatabase");
 
 class AgentRepository {
 
+  async findAll() {
+    const rows = await db.query(`
+        SELECT * FROM agent;
+        `);
+    return rows;
+  }
+
   async create({ name, cpf, email }) {
     const result = await db.query(
       `
