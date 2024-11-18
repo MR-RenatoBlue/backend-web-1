@@ -3,8 +3,9 @@ const db = require("../models/ConnectDatabase");
 class TaskRepository {
   async findAll() {
     const rows = await db.query(`
-        SELECT tasks.* FROM tasks
-        LEFT JOIN categories ON categories.id = tasks.category_id
+        SELECT tasks.*, c.name AS 'category_name',a.name AS 'agent_name' FROM tasks
+        LEFT JOIN categories c ON c.id = tasks.category_id
+        LEFT JOIN agent a ON a.id = tasks.agent_id;
         `);
     return rows;
   }
